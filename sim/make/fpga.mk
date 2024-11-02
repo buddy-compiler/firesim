@@ -6,6 +6,15 @@
 
 platforms_dir := $(abspath $(firesim_base_dir)/../platforms)
 
+$(info firesim_base_dir is: $(firesim_base_dir))
+$(info platforms_dir is: $(platforms_dir))
+$(info PLATFORM is: $(PLATFORM))
+
+.PHONY: xy_test
+xy_test:
+	$(info hello guy!)
+
+
 ifeq ($(PLATFORM), vitis)
 board_dir 	   := $(platforms_dir)/vitis
 else ifeq ($(PLATFORM), xilinx_alveo_u250)
@@ -20,6 +29,8 @@ else ifeq ($(PLATFORM), rhsresearch_nitefury_ii)
 board_dir          := $(platforms_dir)/rhsresearch_nitefury_ii/NiteFury-and-LiteFury-firesim/Sample-Projects/Project-0
 else ifeq ($(PLATFORM), f1)
 board_dir 	   := $(platforms_dir)/f1/aws-fpga/hdk/cl/developer_designs
+else ifeq ($(PLATFORM), vc707)
+board_dir 	   := $(platforms_dir)/xilinx_vc707
 else
 $(error Invalid PLATFORM used: $(PLATFORM))
 endif
